@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students',
-    'cloudinary'
+    'pairup-accounts',
+    'cloudinary',
+    'cohort',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -76,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'students.Account'
+AUTH_USER_MODEL = 'pairup-accounts.Account'
 
 WSGI_APPLICATION = 'pair.wsgi.application'
 
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'pair.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'try',
+        'NAME': 'pair',
         'USER': 'briankiiru',
     'PASSWORD':'andela',
     }

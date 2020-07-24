@@ -38,7 +38,7 @@ class Account(AbstractBaseUser):
 	username 				= models.CharField(max_length=30, unique=True)
 	bio                     = models.TextField(blank=True)
 	profile_pic             = CloudinaryField('profile_pic')
-	phone                   = models.CharField(max_length = 10,blank =True, unique=True)
+	phone                   = models.CharField(max_length = 10,blank =True, unique=False)
 	date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
 	last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
 	is_admin				= models.BooleanField(default=False)
@@ -62,11 +62,5 @@ class Account(AbstractBaseUser):
 	def has_module_perms(self, app_label):
 		return True
 
-
-class Cohort(models.Model):
-	# users = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
-	cohort_name = models.CharField(max_length =60)
-	date_joined	= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-	last_login	= models.DateTimeField(verbose_name='last login', auto_now=True)
 
 
