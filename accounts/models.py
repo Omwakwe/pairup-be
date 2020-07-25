@@ -2,7 +2,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-
 class MyAccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
 		if not email:
@@ -35,6 +34,8 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
+	first_name 				= models.CharField(max_length=30, unique=False)
+	last_name				= models.CharField(max_length=30, unique=False)
 	username 				= models.CharField(max_length=30, unique=True)
 	bio                     = models.TextField(blank=True)
 	profile_pic             = CloudinaryField('profile_pic')

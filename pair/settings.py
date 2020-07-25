@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pairup-accounts',
-    'cloudinary',
+    'accounts',
     'cohort',
+    'cloudinary',
+    'django_extensions',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -77,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'pairup-accounts.Account'
+AUTH_USER_MODEL = 'accounts.Account'
 
 WSGI_APPLICATION = 'pair.wsgi.application'
 
