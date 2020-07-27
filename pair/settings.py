@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cohort',
     'cloudinary',
     'django_extensions',
+    'bootstrap4',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',

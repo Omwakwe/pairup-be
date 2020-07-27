@@ -3,7 +3,7 @@ from .models import *
 
 
 class CohortAdmin(admin.ModelAdmin):
-    list_display = ('cohort_name',)
+    list_display = ('cohort_name', 'date_added')
 
 
 

@@ -26,20 +26,6 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(Account, CustomUserAdmin)
 
-# class AccountAdmin(UserAdmin):
-# 	list_display = ('email', 'first_name','last_name', 'cohort', 'phone', 'date_joined', 'last_login', 'is_admin', 'is_staff', 'is_tm', 'is_student')
-# 	list_editable=[ 'first_name','last_name','phone',]
-# 	ordering = ('email',)
 
-
-# 	search_fields = ('email', )
-# 	readonly_fields = ('date_joined', 'last_login')
-# 	list_display_links = ['email']
-
-# 	filter_horizontal = ()
-# 	list_filter = ()
-# 	fieldsets = ()
-
-# admin.site.register(Account, AccountAdmin)
 
 
