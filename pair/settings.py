@@ -33,15 +33,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pairup-accounts',
-    'cloudinary',
     'cohort',
+    'cloudinary',
+    'django_extensions',
+    'bootstrap4',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -77,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'pairup-accounts.Account'
+AUTH_USER_MODEL = 'accounts.Account'
 
 WSGI_APPLICATION = 'pair.wsgi.application'
 

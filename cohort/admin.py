@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+
+class CohortAdmin(admin.ModelAdmin):
+    list_display = ('cohort_name', 'date_added')
+
+
+
+admin.site.register(Cohort, CohortAdmin)
