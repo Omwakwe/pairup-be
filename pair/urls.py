@@ -19,7 +19,7 @@ from accounts import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'', include('accounts.urls')),
+    url(r'', include('accounts.urls')),
     url(r'', include('cohort.urls')),
     #url(r'^user_login/$',views.user_login,name='user_login'),
     #url(r'^accounts/login/$',views.user_login,name='user_login'),
