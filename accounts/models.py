@@ -12,6 +12,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
 	first_name 				= models.CharField(max_length=30, unique=False)
 	last_name				= models.CharField(max_length=30, unique=False)
+	user_name               = models.CharField(max_length=10, unique=True, default='')
 	bio                     = models.TextField(blank=True)
 	profile_pic             = CloudinaryField('profile_pic')
 	cohort                  = models.ForeignKey(Cohort, on_delete=models.CASCADE, null=True)
