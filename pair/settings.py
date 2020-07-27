@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'cohort',
     'cloudinary',
     'django_extensions',
@@ -91,8 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pair',
-        'USER': 'briankiiru',
-    'PASSWORD':'andela',
+        'USER': 'remmi',
+    'PASSWORD':'stephen',
     }
 }
 
