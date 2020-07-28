@@ -22,7 +22,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('accounts.urls')),
     url(r'', include('cohort.urls')),
-    url('api-auth/', include('rest_framework.urls'))
+    url('api-auth/', include('rest_framework.urls')),
+    url('api/token/', ObtainTokenPairView.as_views()),
+    url('api/token/refresh/', TokenRefreshView.sa_views())
     #url(r'^user_login/$',views.user_login,name='user_login'),
     #url(r'^accounts/login/$',views.user_login,name='user_login'),
     #url(r'^logout/$', views.user_logout, name='user_logout'),
