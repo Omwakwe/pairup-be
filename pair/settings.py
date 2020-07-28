@@ -48,6 +48,12 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
+CORS_ORIGIN_WHITELIST = [
+    "https://pair-app-v1.herokuapp.com/",
+    "http://127.0.0.1:8000",
+]
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,6 +86,7 @@ INSTALLED_APPS = [
     'cohort',
     'cloudinary',
     'bootstrap4',
+    'corsheaders',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -96,6 +103,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'pair.urls'
