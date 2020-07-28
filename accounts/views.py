@@ -13,6 +13,7 @@ class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
+
 #Create your views here.
 #def index(request):
     #return render(request, 'index.html',)
