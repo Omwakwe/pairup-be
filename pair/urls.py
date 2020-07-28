@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from accounts import views
+from rest_framework_simplejwt.views import ObtainTokenPairView, TokenRefreshView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
