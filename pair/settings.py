@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'cohort',
     'cloudinary',
-    'django_extensions',
     'bootstrap4',
 ]
 cloudinary.config (
@@ -92,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pair',
-        'USER': '',
-    'PASSWORD':'',
+        'USER': 'briankiiru',
+    'PASSWORD':'andela',
     }
 }
 
