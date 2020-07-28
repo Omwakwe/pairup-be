@@ -63,8 +63,6 @@ DEBUG = True
 
 
 
-
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
@@ -134,14 +132,14 @@ WSGI_APPLICATION = 'pair.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pair',
-        'USER': 'briankiiru',
-    'PASSWORD':'andela',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pair',
+#         'USER': 'briankiiru',
+#     'PASSWORD':'andela',
+#     }
+# }
 
 
 # Password validation
@@ -181,3 +179,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+print ('CONFIG_MODE', config('MODE'))
