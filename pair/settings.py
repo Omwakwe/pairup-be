@@ -61,7 +61,7 @@ SECRET_KEY = '0b-p7#d55w7+4398(^@i%k+n_7fv8ij0c#w)8#po_=cw+$7v=@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 
