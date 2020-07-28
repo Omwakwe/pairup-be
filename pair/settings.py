@@ -48,10 +48,7 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
-CORS_ORIGIN_WHITELIST = [
-    "https://heroku.com/",
-    "http://127.0.0.1:8000",
-]
+CORS_ORIGIN_ALLOW_ALL=True
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
