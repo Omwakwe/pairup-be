@@ -8,6 +8,5 @@ router.register('accounts',views.AccountView)
 
 urlpatterns = [
     url('', include(router.urls))
-    #url(r"^$", views.index, name="index"),
-    #url(r"^profile/(\d+)", views.profile, name="profile"), 
+    
 ]
