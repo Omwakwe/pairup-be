@@ -49,7 +49,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 CORS_ORIGIN_WHITELIST = [
-    "https://pair-app-v1.herokuapp.com/",
+    "https://heroku.com/",
     "http://127.0.0.1:8000",
 ]
 
