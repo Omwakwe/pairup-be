@@ -1,0 +1,12 @@
+<<<<<<< HEAD:virtual/bin/easy_install-3.8
+#!/home/ian/Videos/pairup-be/virtual/bin/python
+=======
+#!/Users/briankiiru/Desktop/pair/pairup-be/kipchoge/bin/python
+>>>>>>> brian:kipchoge/bin/easy_install-3.8
+# -*- coding: utf-8 -*-
+import re
+import sys
+from setuptools.command.easy_install import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

@@ -10,3 +10,6 @@ class CohortView(viewsets.ModelViewSet):
     queryset = Cohort.objects.all()
     serializer_class = CohortSerializer
 
+
+
+

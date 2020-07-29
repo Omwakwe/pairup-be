@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import cloudinary
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -21,9 +20,6 @@ from decouple import config,Csv
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-EMAIL_HOST = config('EMAIL_HOST', default='localhost')
-EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
-
 # development
 if config('MODE')=="dev":
    DATABASES = {
@@ -51,7 +47,6 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
-CORS_ORIGIN_ALLOW_ALL=True
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -65,9 +60,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0b-p7#d55w7+4398(^@i%k+n_7fv8ij0c#w)8#po_=cw+$7v=@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -82,17 +77,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cohort',
-    'cloudinary',
-    'django_extensions',
-    'bootstrap4',
     'corsheaders',
 ]
-cloudinary.config (
-    cloud_name = 'dirmp3b0n',
-    api_key = '188189335364156',
-    api_secret = '9W11FSQ9FxxMmaJ9CGlRphprZlQ',
 
-)
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -103,7 +90,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL=True
 
 ROOT_URLCONF = 'pair.urls'
 
@@ -137,6 +128,8 @@ WSGI_APPLICATION = 'pair.wsgi.application'
 #         'NAME': 'pair',
 #         'USER': 'ian',
 #     'PASSWORD':'smart',
+#         'USER': 'briankiiru',
+#     'PASSWORD':'andela',
 #     }
 # }
 
@@ -176,7 +169,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
@@ -186,3 +179,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+

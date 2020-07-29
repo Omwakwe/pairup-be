@@ -8,6 +8,9 @@ from .serializers import *
 from .models import Account
 
 
+class StudentView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_student=True)
+    serializer_class = StudentSerializer
 
 class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)

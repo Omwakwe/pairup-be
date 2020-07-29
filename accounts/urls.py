@@ -7,6 +7,6 @@ router = routers.DefaultRouter()
 router.register('accounts',views.StudentView)
 
 urlpatterns = [
-    url(r"", include(router.urls)),
-     
+    url('', include(router.urls))
+    
 ]

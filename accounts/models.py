@@ -1,5 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from cohort.models import Cohort 
 from django.contrib.auth.models import PermissionsMixin
@@ -14,7 +13,6 @@ class Account(AbstractBaseUser, PermissionsMixin):
 	last_name				= models.CharField(max_length=30, unique=False)
 	user_name               = models.CharField(max_length=10, unique=True, default='')
 	bio                     = models.TextField(blank=True)
-	profile_pic             = CloudinaryField('profile_pic')
 	cohort                  = models.ForeignKey(Cohort, on_delete=models.CASCADE, null=True)
 	phone                   = models.CharField(max_length = 10,blank =True, unique=False)
 	date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)

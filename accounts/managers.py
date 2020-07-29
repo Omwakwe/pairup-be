@@ -32,7 +32,6 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError(_('Superuser must have is_superuser=True.'))
         return self.create_user(email, password, **extra_fields)
-    
     def create_student(self, email, password, **extra_fields):
         """
         Custom student model manager where email is the unique identifiers
@@ -71,16 +70,16 @@ class CustomUserManager(BaseUserManager):
     
         return self.create_user(email, password, **extra_fields)
 
-    # def create_admin(self, email, password, **extra_fields):
-    #     """
-    #     Custom student model manager where email is the unique identifiers
-    #     for authentication instead of usernames.
-    #     """
-    #     extra_fields.setdefault('is_admin', True)
-    #     extra_fields.setdefault('is_superuser', False)
+    def create_admin(self, email, password, **extra_fields):
+        """
+        Custom student model manager where email is the unique identifiers
+        for authentication instead of usernames.
+        """
+        extra_fields.setdefault('is_admin', True)
+        extra_fields.setdefault('is_superuser', False)
         
 
-    #     if extra_fields.get('is_admin') is not True:
-    #         raise ValueError(_('Student must have is_student=True.'))
+        if extra_fields.get('is_amin') is not True:
+            raise ValueError(_('Admin must have is_admin=True.'))
     
-    #     return self.create_user(email, password, **extra_fields)
+        return self.create_user(email, password, **extra_fields)
