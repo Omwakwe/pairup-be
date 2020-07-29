@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from accounts import views
+from rest_framework_jwt.views import refresh_jwt_token
 
 urlpatterns = [
     # url(r'', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'api/account/', include('accounts.urls')),
     url(r'api/cohorts/', include('cohort.urls')),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^refresh-token/', refresh_jwt_token),
     
 
 ]

@@ -15,7 +15,7 @@ import cloudinary
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
-
+import datetime
 
 
 MODE=config("MODE", default="dev")
@@ -78,6 +78,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_auth',
+    'allauth',
     'cohort',
     'cloudinary',
     'bootstrap4',
@@ -188,3 +190,18 @@ STATICFILES_DIRS = (
 )
 
 
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=24),
+    'JWT_ALLOW_REFRESH': True,
+}
+
+# Make JWT Auth the default authentication mechanism for Django
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+# Enables django-rest-auth to use JWT tokens instead of regular tokens.
+REST_USE_JWT = True
+
+SITE_ID = 1

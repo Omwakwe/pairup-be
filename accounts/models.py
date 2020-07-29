@@ -5,7 +5,7 @@ from cohort.models import Cohort
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _ 
 from .managers import CustomUserManager
-
+from django.utils.timezone import datetime, timedelta
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
@@ -42,6 +42,19 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
 	def has_module_perms(self, app_label):
 		return True
-
-
+	@property
+	def token(self):
+		date = datetime.now() + timedelta(hours=24)
+		payload = {
+            'email': self.email,
+			'bio': self.bio,
+			'phone ': self.phone,
+            'exp': int(date.strftime('%s')),
+            'id': self.id,
+            'is_admin': self.is_admin,
+            'is_tm': self.is_tm,
+            'is_student': self.is_student,
+        }
+		token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+		return token.decode()
 
