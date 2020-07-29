@@ -4,9 +4,9 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-router.register('accounts',views.StudentView)
+router.register('students',views.StudentView, basename='students')
+router.register('mentors',views.MentorView, basename='mentors')
+router.register('admin',views.AdminView, basename='admins')
 
-urlpatterns = [
-    url('', include(router.urls))
-    
-]
+
+urlpatterns = []+router.urls
