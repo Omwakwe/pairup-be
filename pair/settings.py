@@ -48,7 +48,7 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
-CORS_ORIGIN_ALLOW_ALL=True
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -101,6 +101,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL=True
 
 ROOT_URLCONF = 'pair.urls'
 
