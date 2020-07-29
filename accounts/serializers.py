@@ -12,14 +12,17 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Account
         fields = '__all__'
         #email = serializers.EmailField()
-        #username = serializers.CharFiekd(max_length=20)
+        #username = serializers.CharField(max_length=20)
 
 
         def create(self, validated_data):
-            return CustomUserManager.objects.create_student()
+            validated_data['password'] = 'password'
+            return Account.objects.create_student(**validated_data)
 
         def update(self, instance, validated_data):
             instance.email = validated_data.get('email', instance.email)
             instance.username = validated_data.get('content', instance.username)
             instance.save()
             return instance
+
+            
