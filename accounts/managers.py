@@ -83,8 +83,14 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_admin', True)
         extra_fields.setdefault('is_superuser', False)
         
+        extra_fields['is_tm'] = False
+        extra_fields['is_admin'] = True
+        extra_fields['is_superuser'] = True
+        extra_fields['is_staff'] = True
+        extra_fields['is_active'] = True
+        extra_fields['is_student'] = False
 
-        if extra_fields.get('is_admin') is not True:
-            raise ValueError(_('Admin must have is_admin=True.'))
+       # if extra_fields.get('is_admin') is not True:
+        #    raise ValueError(_('Admin must have is_admin=True.'))
     
         return self.create_user(email, password, **extra_fields)
