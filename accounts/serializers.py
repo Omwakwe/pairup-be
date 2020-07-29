@@ -28,6 +28,13 @@ class StudentSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class MentorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+
+        fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
+
+
 
 
 
