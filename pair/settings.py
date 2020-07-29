@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import cloudinary
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_extensions',
     'bootstrap4',
+    'corsheaders',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -92,8 +96,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pair',
-        'USER': 'remmi',
-    'PASSWORD':'stephen',
+        'USER': 'ian',
+    'PASSWORD':'smart',
     }
 }
 
@@ -134,4 +138,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
