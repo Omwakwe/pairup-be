@@ -24,7 +24,6 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=30)),
                 ('user_name', models.CharField(default='', max_length=10, unique=True)),
                 ('bio', models.TextField(blank=True)),
-#                ('profile_pic', cloudinary.models.CloudinaryField(max_length=255, verbose_name='profile_pic')),
                 ('phone', models.CharField(blank=True, max_length=10)),
                 ('date_joined', models.DateTimeField(auto_now_add=True, verbose_name='date joined')),
                 ('last_login', models.DateTimeField(auto_now=True, verbose_name='last login')),

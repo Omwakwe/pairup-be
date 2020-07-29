@@ -8,10 +8,6 @@ from .serializers import *
 from .models import Account
 
 
-class StudentView(viewsets.ModelViewSet):
-    queryset = Account.objects.filter(is_student=True)
-    serializer_class = StudentSerializer
-
 class MentorView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_tm=True)
     serializer_class = MentorSerializer
@@ -19,3 +15,8 @@ class MentorView(viewsets.ModelViewSet):
 class AdminView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_admin=True)
     serializer_class = AdminSerializer
+
+class StudentView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_student=True)
+    serializer_class = StudentSerializer
+

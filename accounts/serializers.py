@@ -41,7 +41,7 @@ class MentorSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['password'] = 'password'
-        return Account.objects.create_mentor(**validated_data)
+        return Account.objects.create_tm(**validated_data)
 
     def update(self, instance, validated_data):
         instance.email = validated_data.get('email', instance.email)
