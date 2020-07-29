@@ -64,10 +64,15 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_tm', True)
         extra_fields.setdefault('is_superuser', False)
         
+        extra_fields['is_tm'] = True
+        extra_fields['is_admin'] = False
+        extra_fields['is_superuser'] = False
+        extra_fields['is_staff'] = True
+        extra_fields['is_active'] = True
+        extra_fields['is_student'] = False
 
-        if extra_fields.get('is_tm') is not True:
-            raise ValueError(_('Student must have is_student=True.'))
     
+ 
         return self.create_user(email, password, **extra_fields)
 
     def create_admin(self, email, password, **extra_fields):
@@ -79,7 +84,7 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', False)
         
 
-        if extra_fields.get('is_amin') is not True:
+        if extra_fields.get('is_admin') is not True:
             raise ValueError(_('Admin must have is_admin=True.'))
     
         return self.create_user(email, password, **extra_fields)

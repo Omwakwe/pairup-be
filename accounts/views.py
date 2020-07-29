@@ -12,6 +12,10 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)
     serializer_class = StudentSerializer
 
-class StudentView(viewsets.ModelViewSet):
-    queryset = Account.objects.filter(is_student=True)
-    serializer_class = StudentSerializer
+class MentorView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_tm=True)
+    serializer_class = MentorSerializer
+
+class AdminView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_admin=True)
+    serializer_class = AdminSerializer

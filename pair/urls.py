@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'api/account/students', include('accounts.urls')),
+    url(r'api/account/mentors', include('accounts.urls')),
+    url(r'api/account/admin', include('accounts.urls')),
     url(r'api/cohorts/', include('cohort.urls')),
     
 
