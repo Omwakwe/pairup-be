@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import viewsets
 from .serializers import AccountSerializer
-from .models import 
+from .models import *
 
 
 
