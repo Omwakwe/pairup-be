@@ -18,11 +18,8 @@ from django.conf.urls import url, include
 from accounts import views
 
 urlpatterns = [
+    url(r'', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
-    #url(r'', include('accounts.urls')),
-    url(r'', include('cohort.urls')),
-    #url(r'^user_login/$',views.user_login,name='user_login'),
-    #url(r'^accounts/login/$',views.user_login,name='user_login'),
-    #url(r'^logout/$', views.user_logout, name='user_logout'),
-
+    url(r'api/account/students', include('accounts.urls')),
+    url(r'api/cohorts/', include('cohort.urls')),
 ]

@@ -9,6 +9,6 @@ from .models import Account
 
 
 
-class AccountView(viewsets.ModelViewSet):
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+class StudentView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_student=True)
+    serializer_class = StudentSerializer
