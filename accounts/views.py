@@ -4,12 +4,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import viewsets
-from .serializers import AccountSerializer
+from .serializers import *
 from .models import Account
 
 
-
-class AccountView(viewsets.ModelViewSet):
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+class StudentView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_student=True)
+    serializer_class = StudentSerializer
 
