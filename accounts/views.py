@@ -4,9 +4,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import viewsets
-from .serializers import AccountSerializer
+from .serializers import AccountSerializer, CustomTokenObtainPairSerializer
 from .models import Account
+from rest_framework_simplejwt.views import TokenObtainPairView
 
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
 
 
 class AccountView(viewsets.ModelViewSet):
@@ -14,35 +18,23 @@ class AccountView(viewsets.ModelViewSet):
     serializer_class = AccountSerializer
 
 
-#Create your views here.
-#def index(request):
-    #return render(request, 'index.html',)
+# class MyTokenObtainPairView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
+
+# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+#     def validate(self, attrs):
+#         data = super().validate(attrs)
+#         refresh = self.get_token(self.user)
+#         data['refresh'] = str(refresh)
+#         data['access'] = str(refresh.access_token)
+
+#         # Add extra responses here
+#         data['username'] = self.user.username
+#         data['groups'] = self.user.groups.values_list('name', flat=True)
+#         return data
 
 
-#def user_login(request):
-    
-    #if request.method == "POST":
-        #username = request.POST.get("username")
-        #password = request.POST.get("password")
-
-        #user = authenticate(username=username, password=password)
-
-        #if user:
-
-            #if user.is_active:
-                #login(request, user)
-
-                #return HttpResponseRedirect(reverse("index"))
-            #else:
-                #return HttpResponseRedirect(reverse("user_login")) #raise error/ flash
-
-        #else:
-            #return HttpResponseRedirect(reverse("user_login")) #raise error/ flash
-    #else:
-        #return render(request, "auth/login.html", context={})
 
 
-##@login_required
-#def user_logout(request):
-    #logout(request)
-    #return HttpResponseRedirect(reverse("user_login"))
+# class MyTokenObtainPairView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
