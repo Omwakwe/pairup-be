@@ -3,17 +3,12 @@ from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
 
-<<<<<<< HEAD
 
-class UserSerializer(serializers.ModelSerializer):
-    # users = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'email', 'password']
+        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
 
-
-=======
->>>>>>> 2689108a511e7dcba82c7198d61d3df2032b3901
 class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
