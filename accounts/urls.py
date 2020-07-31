@@ -4,7 +4,9 @@ from rest_framework import routers
 from .views import CustomTokenObtainPairView
 
 router = routers.DefaultRouter()
-router.register('accounts',views.AccountView)
+router.register('students',views.StudentView, basename='students')
+router.register('mentors',views.MentorView, basename='mentors')
+router.register('admin',views.AdminView, basename='admins')
 
 urlpatterns = [
     url('', include(router.urls)),
@@ -13,3 +15,7 @@ urlpatterns = [
     #url(r"^$", views.index, name="index"),
     #url(r"^profile/(\d+)", views.profile, name="profile"), 
 ]
+
+
+urlpatterns = []+router.urls
+
