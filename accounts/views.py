@@ -18,12 +18,9 @@ class MentorView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_tm=True)
     serializer_class = MentorSerializer
 
-
 class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
-
-
 
 class AdminView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_admin=True, is_superuser=True)
