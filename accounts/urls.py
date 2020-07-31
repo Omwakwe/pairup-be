@@ -10,12 +10,7 @@ router.register('admin',views.AdminView, basename='admins')
 
 urlpatterns = [
     url('', include(router.urls)),
-    #url('auth/', views.LoginView.as_view()),
     url('auth/jwt/token/', CustomTokenObtainPairView.as_view(), name='custom_token_obtain_pair'),
-    #url(r"^$", views.index, name="index"),
-    #url(r"^profile/(\d+)", views.profile, name="profile"), 
+
+    
 ]
-
-
-urlpatterns = []+router.urls
-

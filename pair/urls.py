@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from accounts import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+
 urlpatterns = [
     # url(r'', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'', include('accounts.urls')),
     url(r'', include('cohort.urls')),
     url('api-auth/', include('rest_framework.urls')),
-    url(r'api/account/', include('accounts.urls')),
-    url(r'api/cohorts/', include('cohort.urls')),
+    # url(r'api/account/', include('accounts.urls')),
+    # url(r'api/cohorts/', include('cohort.urls')),
 ]
     
 

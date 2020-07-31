@@ -14,8 +14,6 @@ from rest_framework.decorators import api_view, permission_classes
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer    
 
-        
-
 class MentorView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_tm=True)
     serializer_class = MentorSerializer
