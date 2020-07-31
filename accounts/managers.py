@@ -32,3 +32,60 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError(_('Superuser must have is_superuser=True.'))
         return self.create_user(email, password, **extra_fields)
+
+    def create_student(self, email, password, **extra_fields):
+        """
+        Custom student model manager where email is the unique identifiers
+        for authentication instead of usernames.
+        """
+        extra_fields.setdefault('is_student', True)
+        extra_fields.setdefault('is_superuser', False)
+      
+
+        extra_fields['is_tm'] = False
+        extra_fields['is_admin'] = False
+        extra_fields['is_superuser'] = False
+        extra_fields['is_staff'] = False
+        extra_fields['is_active'] = True
+        extra_fields['is_student'] = True
+
+
+    
+        return self.create_user(email, password, **extra_fields)
+
+    def create_tm(self, email, password, **extra_fields):
+        """
+        Custom Technical Mentor model manager where email is the unique identifiers
+        for authentication instead of usernames.
+        """
+        extra_fields.setdefault('is_tm', True)
+        extra_fields.setdefault('is_superuser', False)
+
+
+        extra_fields['is_tm'] = True
+        extra_fields['is_admin'] = False
+        extra_fields['is_superuser'] = False
+        extra_fields['is_staff'] = False
+        extra_fields['is_active'] = True
+        extra_fields['is_student'] = False
+        
+    
+        return self.create_user(email, password, **extra_fields)
+
+    def create_admin(self, email, password, **extra_fields):
+        """
+        Custom student model manager where email is the unique identifiers
+        for authentication instead of usernames.
+        """
+        extra_fields.setdefault('is_admin', True)
+        extra_fields.setdefault('is_superuser', False)
+    
+
+        extra_fields['is_tm'] = False
+        extra_fields['is_admin'] = True
+        extra_fields['is_superuser'] = True
+        extra_fields['is_staff'] = True
+        extra_fields['is_active'] = True
+        extra_fields['is_student'] = False
+    
+        return self.create_user(email, password, **extra_fields)

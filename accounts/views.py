@@ -5,12 +5,20 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import viewsets
 from .serializers import AccountSerializer, CustomTokenObtainPairSerializer
+from .serializers import *
 from .models import Account
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    serializer_class = CustomTokenObtainPairSerializer
+    serializer_class = CustomTokenObtainPairSerializer    
+
+        
+
+class MentorView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_tm=True)
+    serializer_class = MentorSerializer
 
 
 class AccountView(viewsets.ModelViewSet):
@@ -18,23 +26,15 @@ class AccountView(viewsets.ModelViewSet):
     serializer_class = AccountSerializer
 
 
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
 
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     def validate(self, attrs):
-#         data = super().validate(attrs)
-#         refresh = self.get_token(self.user)
-#         data['refresh'] = str(refresh)
-#         data['access'] = str(refresh.access_token)
-
-#         # Add extra responses here
-#         data['username'] = self.user.username
-#         data['groups'] = self.user.groups.values_list('name', flat=True)
-#         return data
+class AdminView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_admin=True, is_superuser=True)
+    serializer_class = AdminSerializer
+    
+class StudentView(viewsets.ModelViewSet):
+    queryset = Account.objects.filter(is_student=True)
+    serializer_class = StudentSerializer
 
 
 
 
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
