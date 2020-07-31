@@ -7,15 +7,20 @@ from rest_framework import viewsets
 from .serializers import AccountSerializer, CustomTokenObtainPairSerializer
 from .models import Account
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    
+
+        
 
 
 class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
+
 
 
 # class MyTokenObtainPairView(TokenObtainPairView):

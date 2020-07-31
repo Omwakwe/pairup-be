@@ -9,11 +9,22 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
-    def validate(self, attrs):
-        ## This data variable will contain refresh and access tokens
-        data = super().validate(attrs)
-        ## You can add more User model's attributes like username,email etc. in the data dictionary like this.
-        data['email'] = self.user.email
-        data['bio'] = self.user.bio
-        data['phone'] = self.user.phone
-        return data
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['email'] = user.email
+        token['bio'] = user.bio
+        token['phone'] = user.phone
+
+        if user.is_admin:
+            token['role'] = 'admin'
+        elif user.is_tm:
+            token['role'] = 'mentor'
+        elif user.is_student:
+            token['role'] = 'student'
+        else:
+            token['role'] = 'Unknown'
+
+
+        return token
