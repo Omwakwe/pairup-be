@@ -3,6 +3,12 @@ from .models import Account
 from .managers import *
 
 
+class UserSerializer(serializers.ModelSerializer):
+    # users = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
+    class Meta:
+        model = Account
+        fields = ['id', 'email', 'password']
+
 
 class StudentSerializer(serializers.ModelSerializer):
     
