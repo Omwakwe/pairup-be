@@ -3,12 +3,6 @@ from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
 
-
-class AccountSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Account
-        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
-
 class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
