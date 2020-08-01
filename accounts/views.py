@@ -12,7 +12,10 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    serializer_class = CustomTokenObtainPairSerializer    
+    serializer_class = CustomTokenObtainPairSerializer
+    @classmethod
+    def get_extra_actions(cls):
+        return []    
 
 class MentorView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_tm=True)
