@@ -115,6 +115,7 @@ env.bak/
 venv.bak/
 .vscode
 kipchoge/
+me/
 
 # Spyder project settings
 .spyderproject
