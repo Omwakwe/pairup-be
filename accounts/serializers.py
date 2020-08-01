@@ -2,8 +2,6 @@ from rest_framework import serializers
 from .models import Account
 from .managers import *
 
-
-
 class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
