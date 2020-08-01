@@ -82,6 +82,10 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap4',
     'corsheaders',
+    'drf_yasg',
+   
+    
+    
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -187,4 +191,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }
 
