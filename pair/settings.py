@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import cloudinary
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+from my_secrets import secrets
 
-
-
+SECRET_KEY = secrets.SECRET_KEY
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -69,6 +70,7 @@ SECRET_KEY = '0b-p7#d55w7+4398(^@i%k+n_7fv8ij0c#w)8#po_=cw+$7v=@'
 
 INSTALLED_APPS = [
     'accounts',
+    'django_secrets',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,10 +78,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'cloudinary',
     'cohort',
     'corsheaders',
 ]
+cloudinary.config (
+    cloud_name = 'dirmp3b0n',
+    api_key = '188189335364156',
+    api_secret = '9W11FSQ9FxxMmaJ9CGlRphprZlQ',
 
+)
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

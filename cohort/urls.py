@@ -6,6 +6,4 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register('cohorts',views.CohortView, basename='cohorts')
 
-urlpatterns = [
-    path('', include(router.urls))
-]
+urlpatterns = []+router.urls
