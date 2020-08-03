@@ -8,7 +8,7 @@ from .serializers import *
 from .models import Account
 from rest_framework import generics
 from rest_framework.permissions import AllowAny,IsAuthenticated
-from .helper.email_helper import send_email
+
 from django.template.loader import render_to_string
 from rest_framework import status
 from django.conf import settings

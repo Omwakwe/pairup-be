@@ -3,4 +3,4 @@ Hello {{name}}
 Thank you for joining Moringa School
 Welcome!
 
-PAIR UP (2020)
+PAIR-UP (2020)
