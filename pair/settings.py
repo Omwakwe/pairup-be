@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cohort',
+    'studentpair',
     'cloudinary',
     'bootstrap4',
     'corsheaders',
