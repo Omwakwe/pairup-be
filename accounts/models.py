@@ -5,7 +5,9 @@ from cohort.models import Cohort
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _ 
 from .managers import CustomUserManager
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from journal.settings import AUTH_USER_MODEL as User
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
@@ -44,4 +46,17 @@ class Account(AbstractBaseUser, PermissionsMixin):
 		return True
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    email_confirmed = models.BooleanField(default=False)
+    reset_password = models.BooleanField(default=False)
 
+    class Meta:
+        app_label = 'auth'
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
