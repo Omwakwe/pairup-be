@@ -50,7 +50,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 
-from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,6 +82,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap4',
     'corsheaders',
+    'drf_yasg',
+   
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -129,6 +130,18 @@ AUTH_USER_MODEL = 'accounts.Account'
 WSGI_APPLICATION = 'pair.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pair',
+#         'USER': 'briankiiru',
+#     'PASSWORD':'andela',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -170,22 +183,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
-    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
-}
-
-import datetime
-JWT_AUTH = {
- 
-    'JWT_VERIFY': True,
-    'JWT_VERIFY_EXPIRATION': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3000),
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
- 
-}
-
-
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -193,4 +190,23 @@ STATICFILES_DIRS = (
 )
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
+# REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }
 
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
