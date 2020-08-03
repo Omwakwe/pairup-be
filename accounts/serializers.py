@@ -12,7 +12,7 @@ class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Account
-        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
+        fields = ['id','email','first_name','last_name','user_name', 'cohort','bio','phone','last_login',]
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
