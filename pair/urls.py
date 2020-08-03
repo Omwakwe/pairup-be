@@ -23,11 +23,11 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="Pair-Up API",
       default_version='v1',
-      description="Test description",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      description="Pair-up API Endpoints",
+      terms_of_service="kiirubrian21@gmail.com",
+      contact=openapi.Contact(email="kiirubrian21@gmail.com"),
       license=openapi.License(name="BSD License"),
    ),
    public=True,
