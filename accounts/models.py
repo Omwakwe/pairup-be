@@ -45,15 +45,3 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
 
 
-# class secrets.SystemRandom():
-# 	A class for generating random numbers using the highest-quality sources provided by the operating system. See random.SystemRandom for additional details.
-
-
-# 	def secrets.choice(sequence):
-# 		Return a randomly-chosen element from a non-empty sequence.
-
-# 	def secrets.randbelow(n):
-# 		Return a random int in the range [0, n).
-
-# 	def secrets.randbits(k):
-# 		Return an int with k random bits.
