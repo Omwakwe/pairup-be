@@ -21,7 +21,7 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)
     serializer_class = StudentSerializer
 
-#create views
+# #create views
 def index(request):   
     send_mail('Hello from Moringa School',
     'Behold are your login credentials',

@@ -199,6 +199,6 @@ STATICFILES_DIRS = (
 EMAIL_HOST = 'smtp.hushmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mdawidamengo@gmail.com'
-EMAIL_HOST_PASSWORD = 'mdawudah'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
