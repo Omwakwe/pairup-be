@@ -7,5 +7,9 @@ router = routers.DefaultRouter()
 router.register('students',views.StudentView, basename='students')
 router.register('mentors',views.MentorView, basename='mentors')
 router.register('admins',views.AdminView, 'admin')
+# router.register(r'journals', views.JournalViewSet)
+# router.register(r'journal/(?P<journal>[^/]+)', views.EntryViewSet)
 
-urlpatterns = []+router.urls
+urlpatterns = [
+    url(r'^api/v1/', include(router.urls)),
+]+router.urls

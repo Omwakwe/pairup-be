@@ -11,11 +11,11 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('email',)
 
 
-# class CustomUserChangeForm(UserChangeForm):
+class CustomUserChangeForm(UserChangeForm):
 
-#     class Meta:
-#         model = Account
-#         fields = ('email',)
+    class Meta:
+        model = Account
+        fields = ('email',)
 
 class UserPasswordResetForm(SetPasswordForm):
     """Change password form."""

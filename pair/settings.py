@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cohort',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',
@@ -88,6 +89,12 @@ cloudinary.config (
     api_secret = '9W11FSQ9FxxMmaJ9CGlRphprZlQ',
 
 )
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -189,3 +196,9 @@ STATICFILES_DIRS = (
 )
 
 
+EMAIL_HOST = 'smtp.hushmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mdawidamengo@gmail.com'
+EMAIL_HOST_PASSWORD = 'mdawudah'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
