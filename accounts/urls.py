@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 router.register('students',views.StudentView, basename='students')
 router.register('mentors',views.MentorView, basename='mentors')
 router.register('admins',views.AdminView, basename='admins')
-router.register('login',views.CustomTokenObtainPairView, basename='login')
+# router.register('login',views.CustomTokenObtainPairView, basename='login')
 
 urlpatterns = [
     

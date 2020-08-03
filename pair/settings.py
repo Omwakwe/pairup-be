@@ -84,8 +84,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
    
-    
-    
 ]
 cloudinary.config (
     cloud_name = 'dirmp3b0n',

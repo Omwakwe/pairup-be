@@ -49,7 +49,6 @@ class CustomUserManager(BaseUserManager):
         extra_fields['is_active'] = True
         extra_fields['is_student'] = True
 
-
     
         return self.create_user(email, password, **extra_fields)
 
