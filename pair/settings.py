@@ -16,6 +16,7 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 from datetime import timedelta
+from django.conf import settings
 
 
 MODE=config("MODE", default="dev")
