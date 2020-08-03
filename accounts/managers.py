@@ -19,8 +19,10 @@ class CustomUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
+
         name = user.user_name
         address = email
+
         
         user.save()
         send_signup_email(name, password, email, address)
