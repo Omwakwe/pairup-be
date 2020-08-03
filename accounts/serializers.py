@@ -2,18 +2,30 @@ from rest_framework import serializers
 from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
-
+from .password import generate_password
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
-
+        
 class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Account
-        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
+        fields = ['id','email','first_name','last_name','user_name', 'cohort','bio','phone','last_login',]
+
+    def create(self, validated_data):
+        validated_data['password'] = generate_password(8)
+        print('Create student')
+        return Account.objects.create_student(**validated_data)
+
+
+    def update(self, instance, validated_data):
+        instance.email = validated_data.get('email', instance.email)
+        instance.username = validated_data.get('content', instance.username)
+        instance.save()
+        return instance
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -40,16 +52,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
 
-    
-    def create(self, validated_data):
-        validated_data['password'] = 'password'
-        return Account.objects.create_student(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.email = validated_data.get('email', instance.email)
-        instance.username = validated_data.get('content', instance.username)
-        instance.save()
-        return instance
 
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -58,7 +60,7 @@ class MentorSerializer(serializers.ModelSerializer):
         fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
 
     def create(self, validated_data):
-        validated_data['password'] = 'password'
+        validated_data['password'] = generate_password(8)
         return Account.objects.create_tm(**validated_data)
 
     def update(self, instance, validated_data):
@@ -72,7 +74,7 @@ class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
 
-        fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
+        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
 
     def create(self, validated_data):
         validated_data['password'] = 'password'

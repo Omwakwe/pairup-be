@@ -17,18 +17,33 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from accounts import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Pair-Up API",
+      default_version='v1',
+      description="Pair-up API Endpoints",
+      terms_of_service="kiirubrian21@gmail.com",
+      contact=openapi.Contact(email="kiirubrian21@gmail.com"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
-    # url(r'', include('accounts.urls')),
+    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     url(r'^admin/', admin.site.urls),
     url(r'', include('accounts.urls')),
     url(r'', include('cohort.urls')),
     url('api-auth/', include('rest_framework.urls')),
-    # url(r'api/account/', include('accounts.urls')),
-    # url(r'api/cohorts/', include('cohort.urls')),
 ]
     
-
+# Student Pair-Up API Documentation
 
 
