@@ -32,10 +32,17 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+        
         # Add custom claims
         token['email'] = user.email
         token['bio'] = user.bio
         token['phone'] = user.phone
+
+
+
+        
+
+        
 
         if user.is_admin:
             token['role'] = 'admin'
@@ -52,6 +59,16 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
 
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        refresh = self.get_token(self.user)
+        data['refresh'] = str(refresh)
+        data.pop('access', None) # remove access from the payload
+        data['refresh'] = str(refresh.access_token)
+
+        
+        return data
 
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
