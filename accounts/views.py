@@ -27,6 +27,9 @@ class StudentView(viewsets.ModelViewSet):
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
+class TokenRefreshView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
 class MentorView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_tm=True)
     serializer_class = MentorSerializer
@@ -34,7 +37,8 @@ class MentorView(viewsets.ModelViewSet):
 class AdminView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_admin=True, is_superuser=True)
     serializer_class = AdminSerializer
-    
+
+
 #Create your views here.
 #def index(request):
     #return render(request, 'index.html',)
