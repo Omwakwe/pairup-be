@@ -3,6 +3,7 @@ from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
 from .password import generate_password
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -59,16 +60,22 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        refresh = self.get_token(self.user)
-        data['refresh'] = str(refresh)
-        data.pop('access', None) # remove access from the payload
-        data['refresh'] = str(refresh.access_token)
+class MyTokenObtainPairSerializer(CustomTokenObtainPairSerializer):
+    # @classmethod
+    # def get_token(cls, user):
+    #     return RefreshToken.for_user(user)
 
+    def validate(self, attrs):
+        token = super().validate(attrs)
+
+        refresh = self.get_token(self.user)
+
+        token['refresh'] = str(refresh)
+        token.pop('access', None) # remove access from the payload
         
-        return data
+        
+
+        return token
 
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
