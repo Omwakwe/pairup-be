@@ -8,6 +8,8 @@ router.register('students',views.StudentView, basename='students')
 router.register('mentors',views.MentorView, basename='mentors')
 router.register('admins',views.AdminView, basename='admins')
 router.register('login',views.CustomTokenObtainPairView, basename='login')
+router.register('cohorts',views.CohortStudentsView, basename='cohort')
+
 
 urlpatterns = [
     

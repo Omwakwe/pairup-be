@@ -33,6 +33,22 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)
     serializer_class = StudentSerializer
 
+class CohortStudentsView(viewsets.ModelViewSet):
+    # students = Account.objects.filter(is_student=True)
+    # queryset = Cohort.objects.filter(cohort_name=cohort_name)
+    serializer_class = CohortStudentsSerializer
+
+    def get_queryset(self):
+        queryset = Cohort.objects.all()
+        students = Account.objects.filter(is_student=True)
+
+        cohort = self.request.query_params.get('cohort',None)
+        if cohort is not None:
+            queryset = queryset.filter(cohort__cohort_name=cohort)
+        return queryset
+
+    #cohort/1
+    #cohort?id=1
 
 
 

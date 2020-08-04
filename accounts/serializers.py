@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
+from cohort.models import *
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,7 +13,7 @@ class StudentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Account
-        fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
+        fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -83,7 +84,11 @@ class AdminSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class CohortStudentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cohort
 
+        fields = '__all__'
 
     
 
