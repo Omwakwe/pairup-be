@@ -4,6 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
 from .password import generate_password
 from rest_framework_simplejwt.tokens import RefreshToken
+# from cohort.serializers import *
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -113,4 +114,3 @@ class AdminSerializer(serializers.ModelSerializer):
 
 
     
-
