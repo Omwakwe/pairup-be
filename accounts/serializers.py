@@ -4,14 +4,18 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
 from .password import generate_password
 from rest_framework_simplejwt.tokens import RefreshToken
+from cohort.serializers import *
 # from cohort.serializers import *
 
 class AccountSerializer(serializers.ModelSerializer):
+    
+
     class Meta:
         model = Account
         fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
         
 class StudentSerializer(serializers.ModelSerializer):
+    cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
     
     class Meta:
         model = Account
@@ -79,6 +83,8 @@ class MyTokenObtainPairSerializer(CustomTokenObtainPairSerializer):
         return token
 
 class MentorSerializer(serializers.ModelSerializer):
+    cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
+
     class Meta:
         model = Account
 
