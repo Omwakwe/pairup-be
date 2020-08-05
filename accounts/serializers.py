@@ -10,6 +10,8 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = ['id','email','first_name','last_name','user_name','bio','phone','last_login',]
         
 class StudentSerializer(serializers.ModelSerializer):
+    cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
+
     
     class Meta:
         model = Account
@@ -85,6 +87,7 @@ class AdminSerializer(serializers.ModelSerializer):
         return instance
 
 class CohortStudentsSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Cohort
 
