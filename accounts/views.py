@@ -10,6 +10,9 @@ from .models import Account
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import permissions
+from rest_framework_simplejwt import authentication
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -33,22 +36,36 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)
     serializer_class = StudentSerializer
 
-class CohortStudentsView(viewsets.ModelViewSet):
-    # students = Account.objects.filter(is_student=True)
-    # queryset = Cohort.objects.filter(cohort_name=cohort_name)
-    serializer_class = CohortStudentsSerializer
 
-    def get_queryset(self):
-        queryset = Cohort.objects.all()
-        students = Account.objects.filter(is_student=True)
 
-        cohort = self.request.query_params.get('cohort',None)
-        if cohort is not None:
-            queryset = queryset.filter(cohort__cohort_name=cohort)
-        return queryset
+# class CreatePairs(APIView):
+#     """
+#     View to list all users in the system.
 
-    #cohort/1
-    #cohort?id=1
+#     * Requires token authentication.
+#     * Only admin users are able to access this view.
+#     """
+#     authentication_classes = [authentication.JWTAuthentication]
+#     permission_classes = [permissions.AllowAny]
+
+#     def post(self, request, format=None):
+#         """
+#         Return a list of all users.
+#         """
+#         day_of_week = "2020-8-5"
+#         cohort_id = 2
+#         retrived_cohort = Cohort.objects.get(id=cohort_id)
+#         students_cohort = Account.objects.filter(is_student=True, cohort=retrived_cohort)
+#         all_students = []
+#         for student in students_cohort:
+#             student_id = student.id
+#             all_students.append(student_id)
+#         print('student id')
+#         print(all_students)
+        
+#         response = {'message': 'message'}
+#         return Response(response)
+
 
 
 
