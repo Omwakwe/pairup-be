@@ -137,13 +137,13 @@ WSGI_APPLICATION = 'pair.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'pair',
-#         'USER': 'briankiiru',
-#     'PASSWORD':'andela',
-#     }
-# }
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': 'pair',
+#          'USER': 'remmi',
+#      'PASSWORD':'stephen',
+#      }
+#  }
 
 
 # Password validation
