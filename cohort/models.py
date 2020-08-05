@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import *
+from accounts.models import Account
 # from studentpair.models import *
 
 
