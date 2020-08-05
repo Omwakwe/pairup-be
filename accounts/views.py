@@ -34,6 +34,9 @@ class StudentView(viewsets.ModelViewSet):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    @classmethod	
+    def get_extra_actions(cls):
+        return [] 
 
 class TokenRefreshView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
