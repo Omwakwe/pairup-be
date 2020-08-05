@@ -9,7 +9,7 @@ class CohortView(viewsets.ModelViewSet):
     '''
     queryset = Cohort.objects.all()
     serializer_class = CohortSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.AllowAny,)
 
 
 

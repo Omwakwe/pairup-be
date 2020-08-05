@@ -7,7 +7,7 @@ class CohortSerializer(serializers.ModelSerializer):
         fields = ['id','cohort_name','date_added']
 
 
-# Pair record modul
+# Pair record model
 
 # date 
 # student1 & 2
