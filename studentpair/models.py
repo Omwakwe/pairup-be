@@ -14,7 +14,7 @@ class StudentPair(models.Model):
 
 
     def __str__(self):
-        return self.first_student + ' ' + self.second_student
+        return str(self.first_student.id) + ' ' + str(self.second_student.id)
 
     class Meta:
         verbose_name_plural = 'pairing'
