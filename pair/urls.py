@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('accounts.urls')),
     url(r'', include('cohort.urls')),
+    url(r'', include('studentpair.urls')),
     url('api-auth/', include('rest_framework.urls')),
 ]
     

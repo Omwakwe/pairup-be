@@ -80,10 +80,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cohort',
+    'studentpair',
     'cloudinary',
     'bootstrap4',
     'corsheaders',
     'drf_yasg',
+    'pendulum',
    
 ]
 cloudinary.config (
@@ -135,13 +137,13 @@ WSGI_APPLICATION = 'pair.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'pair',
-#         'USER': 'briankiiru',
-#     'PASSWORD':'andela',
-#     }
-# }
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': 'pair',
+#          'USER': 'remmi',
+#      'PASSWORD':'stephen',
+#      }
+#  }
 
 
 # Password validation
@@ -191,6 +193,9 @@ STATICFILES_DIRS = (
 )
 
 
+
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -204,6 +209,10 @@ LOGGING = {
         'level': 'WARNING',
     },
 }
+
+
+
+
 # REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }
 
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')

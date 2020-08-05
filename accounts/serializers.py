@@ -2,10 +2,13 @@ from rest_framework import serializers
 from .models import Account
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .managers import *
+from cohort.models import *
+
 from .password import generate_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from cohort.serializers import *
 # from cohort.serializers import *
+
 
 class AccountSerializer(serializers.ModelSerializer):
     
@@ -16,6 +19,13 @@ class AccountSerializer(serializers.ModelSerializer):
         
 class StudentSerializer(serializers.ModelSerializer):
     cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
+
+
+    
+    class Meta:
+        model = Account
+        fields = ['id','email','first_name','last_name','user_name','cohort','bio','phone','last_login',]
+
     
     class Meta:
         model = Account
@@ -32,6 +42,7 @@ class StudentSerializer(serializers.ModelSerializer):
     #     instance.user_name = validated_data.get('content', instance.user_name)
     #     instance.save()
     #     return instance
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -117,6 +128,11 @@ class AdminSerializer(serializers.ModelSerializer):
     #     instance.save()
     #     return instance
 
+class CohortStudentsSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Cohort
+
+        fields = '__all__'
 
     

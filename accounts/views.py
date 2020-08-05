@@ -15,6 +15,13 @@ from django.conf import settings
 from rest_framework.response  import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import permissions
+from rest_framework_simplejwt import authentication
+
+
 
 class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
@@ -23,6 +30,7 @@ class AccountView(viewsets.ModelViewSet):
 class StudentView(viewsets.ModelViewSet):
     queryset = Account.objects.filter(is_student=True)
     serializer_class = StudentSerializer
+
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -65,6 +73,36 @@ class AdminView(viewsets.ModelViewSet):
             #return HttpResponseRedirect(reverse("user_login")) #raise error/ flash
     #else:
         #return render(request, "auth/login.html", context={})
+
+# class CreatePairs(APIView):
+#     """
+#     View to list all users in the system.
+
+#     * Requires token authentication.
+#     * Only admin users are able to access this view.
+#     """
+#     authentication_classes = [authentication.JWTAuthentication]
+#     permission_classes = [permissions.AllowAny]
+
+#     def post(self, request, format=None):
+#         """
+#         Return a list of all users.
+#         """
+#         day_of_week = "2020-8-5"
+#         cohort_id = 2
+#         retrived_cohort = Cohort.objects.get(id=cohort_id)
+#         students_cohort = Account.objects.filter(is_student=True, cohort=retrived_cohort)
+#         all_students = []
+#         for student in students_cohort:
+#             student_id = student.id
+#             all_students.append(student_id)
+#         print('student id')
+#         print(all_students)
+        
+#         response = {'message': 'message'}
+#         return Response(response)
+
+
 
 
 ##@login_required
