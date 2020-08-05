@@ -24,10 +24,10 @@ from django.db.models import Q
 
 class StudentPairView(APIView):
     """
-    View to list all students in the cohort.
+    View to get a single student pair.
 
-    * Requires token authentication.
-    * Only admin users are able to access this view.
+    * Requires  JWT authentication.
+    * Only authenticated students are able to access this view.
     """
     authentication_classes = [authentication.JWTAuthentication]
     permission_classes = [permissions.AllowAny]
@@ -145,10 +145,10 @@ class StudentPairView(APIView):
 
 class PairHistoryView(APIView):
     """
-    View to list all students in the cohort.
+    View to retrive history of paired students in the cohort.
 
-    * Requires token authentication.
-    * Only admin users are able to access this view.
+    * Requires JWT authentication.
+    * Only authenticated TMs are able to access this view.
     """
     authentication_classes = [authentication.JWTAuthentication]
     permission_classes = [permissions.AllowAny]
@@ -210,10 +210,10 @@ class PairHistoryView(APIView):
 
 class CreatePairs(APIView):
     """
-    View to list all students in the cohort.
+    View to create students in the cohort.
 
-    * Requires token authentication.
-    * Only admin users are able to access this view.
+    * Requires JWT authentication.
+    * Only TMs are able to access this view.
     """
     authentication_classes = [authentication.JWTAuthentication]
     permission_classes = [permissions.AllowAny]
@@ -304,7 +304,7 @@ class CreatePairs(APIView):
                 new_student_pair.second_student_id = student2_id
                 new_student_pair.third_student_id = student3_id
             new_student_pair.save()
-        response = all_students
+        response = {'message': 'Successfully Created Pairs'}
         print("All students", all_students)
         return Response(response)
         
