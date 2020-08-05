@@ -27,11 +27,11 @@ class StudentSerializer(serializers.ModelSerializer):
         return Account.objects.create_student(**validated_data)
 
 
-    def update(self, instance, validated_data):
-        instance.email = validated_data.get('email', instance.email)
-        instance.username = validated_data.get('content', instance.username)
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.email = validated_data.get('email', instance.email)
+    #     instance.user_name = validated_data.get('content', instance.user_name)
+    #     instance.save()
+    #     return instance
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -94,11 +94,11 @@ class MentorSerializer(serializers.ModelSerializer):
         validated_data['password'] = generate_password(8)
         return Account.objects.create_tm(**validated_data)
 
-    def update(self, instance, validated_data):
-        instance.email = validated_data.get('email', instance.email)
-        instance.username = validated_data.get('content', instance.username)
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.email = validated_data.get('email', instance.email)
+    #     instance.user_name = validated_data.get('content', instance.user_name)
+    #     instance.save()
+    #     return instance
 
 
 class AdminSerializer(serializers.ModelSerializer):
@@ -111,11 +111,11 @@ class AdminSerializer(serializers.ModelSerializer):
         validated_data['password'] = 'password'
         return Account.objects.create_admin(**validated_data)
 
-    def update(self, instance, validated_data):
-        instance.email = validated_data.get('email', instance.email)
-        instance.username = validated_data.get('content', instance.username)
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.email = validated_data.get('email', instance.email)
+    #     instance.user_name = validated_data.get('content', instance.user_name)
+    #     instance.save()
+    #     return instance
 
 
 
