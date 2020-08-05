@@ -83,7 +83,7 @@ class MyTokenObtainPairSerializer(CustomTokenObtainPairSerializer):
         return token
 
 class MentorSerializer(serializers.ModelSerializer):
-    cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
+    # cohort = serializers.ReadOnlyField(source='cohort.cohort_name')
 
     class Meta:
         model = Account
