@@ -14,7 +14,7 @@ django-bootstrap3==14.1.0
 django-cors-headers==3.4.0
 django-extensions==3.0.3
 django-heroku==0.3.1
-django-registration==3.1
+django-registration==3.1.2
 django-rest-swagger==2.2.0
 djangorestframework==3.11.0
 djangorestframework-simplejwt==4.4.0
